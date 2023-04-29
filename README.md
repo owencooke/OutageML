@@ -39,7 +39,7 @@ In the project folder,
 
 ```bash
 $ cd client
-$ yarn && yarn start
+$ npm run dev
 ```
 
 ### To run the server
