@@ -9,7 +9,6 @@
 
 ### Frontend
 
-- TypeScript (frontend language)
 - React (frontend framework)
   - Create React App (support for TSX, ES6, TypeScript, no need to install bundler, ...etc)
   - An example fetch() GET request to the server in [`client/src/App.tsx`](https://github.com/kevinshen56714/create-react-django-app/blob/bb16565cff0d6d1d41a3d3f487f745b08d0a34f6/client/src/App.tsx#L11)
