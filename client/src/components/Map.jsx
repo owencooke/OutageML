@@ -52,7 +52,12 @@ const Map = () => {
   const edmontonCenter = [53.5444, -113.4909];
 
   return (
-    <MapContainer center={edmontonCenter} zoom={11} className="h-screen">
+    <MapContainer
+      center={edmontonCenter}
+      zoom={11}
+      zoomControl={false}
+      className="h-screen"
+    >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {transformers.map((transformer, i) => {
         const priority = new Icon({
