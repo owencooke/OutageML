@@ -1,8 +1,13 @@
+import Map from './Map';
+
 const Home = () => {
   return (
-    <>
-      <div>Home</div>
-    </>
+    <div>
+      {/* Priority List */}
+
+      {/* Map component */}
+      <Map className="h-screen" />
+    </div>
   );
 };
 
