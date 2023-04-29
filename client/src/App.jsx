@@ -6,12 +6,10 @@ function App() {
   return (
     <>
       <Router>
-        <div>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/test-page" element={<TestPage />}></Route>
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/test-page" element={<TestPage />}></Route>
+        </Routes>
       </Router>
     </>
   );
