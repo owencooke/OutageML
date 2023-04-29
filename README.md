@@ -1,4 +1,4 @@
-# Kevin's React + Django + PostgreSQL app template
+# APIC 2023
 
 ![Image](https://user-images.githubusercontent.com/11501902/169211080-f0beca5a-ccb9-430a-8609-266e458d5ec0.png)
 
