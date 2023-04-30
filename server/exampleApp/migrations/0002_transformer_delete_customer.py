@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('coordinates', models.JSONField()),
-                ('priority_ranking', models.IntegerField()),
-                ('time_elapsed', models.IntegerField()),
+                ('priorityRanking', models.IntegerField()),
+                ('timeElapsed', models.IntegerField()),
                 ('resolved', models.BooleanField()),
             ],
         ),

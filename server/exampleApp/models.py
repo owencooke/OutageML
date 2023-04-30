@@ -9,8 +9,8 @@ class Transformer(models.Model):
     # created = models.DateField(auto_now_add=True)
 
     coordinates = models.JSONField()
-    priority_ranking = models.IntegerField()
-    time_elapsed = models.IntegerField()
+    priorityRanking = models.IntegerField()
+    timeElapsed = models.FloatField()
     resolved = models.BooleanField()
 
     def __str__(self):
