@@ -22,83 +22,51 @@ const Home = () => {
   useEffect(() => {
     setTransformers([
       {
-        id: 1,
         coordinates: [53.5461, -113.4938],
         priorityRanking: 2,
         timeElapsed: 15,
-        information: {
-          message: 'Medium Outage',
-        },
         resolved: false,
       },
       {
-        id: 2,
         coordinates: [53.5232, -113.5263],
         priorityRanking: 4,
         timeElapsed: 25,
-        information: {
-          message: 'Urgent Outage!',
-        },
         resolved: false,
       },
       {
-        id: 3,
         coordinates: [53.5763, -113.5765],
         priorityRanking: 1,
         timeElapsed: 10,
-        information: {
-          message: 'Low Outage',
-        },
         resolved: false,
       },
       {
-        id: 4,
         coordinates: [53.5333, -113.5765],
         priorityRanking: 3,
         timeElapsed: 20,
-        information: {
-          message: 'High Outage',
-        },
         resolved: false,
       },
       {
-        id: 5,
         coordinates: [53.5512, -113.4836],
         priorityRanking: 1,
         timeElapsed: 5,
-        information: {
-          message: 'Low Outage',
-        },
         resolved: true,
       },
       {
-        id: 6,
         coordinates: [53.5304, -113.5057],
         priorityRanking: 2,
         timeElapsed: 10,
-        information: {
-          message: 'Medium Outage',
-        },
         resolved: false,
       },
       {
-        id: 7,
         coordinates: [53.5677, -113.5576],
         priorityRanking: 3,
         timeElapsed: 15,
-        information: {
-          message: 'High Outage',
-        },
         resolved: true,
       },
       {
-        id: 8,
         coordinates: [53.5415, -113.6012],
         priorityRanking: 4,
         timeElapsed: 20,
-        information: {
-          message: 'Urgent Outage!',
-        },
         resolved: false,
       },
     ]);

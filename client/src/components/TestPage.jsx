@@ -11,6 +11,7 @@ const TestAPI = () => {
       .then((response) => response.json())
       .then((data) => {
         setCustomers(data);
+        console.log(customers);
       })
       .catch((error) => setError(error.message));
   }, []);
@@ -20,10 +21,8 @@ const TestAPI = () => {
       <div className="text-3xl font-bold underline">
         Test fetch to django rest framework
       </div>
-      {customers.map(({ pk, name, email, created }) => (
-        <p key={pk}>
-          Customer name: {name}, email: {email}, created at: {created}
-        </p>
+      {customers.map((transformer, i) => (
+        <p key={i}>{transformer.coordinates}</p>
       ))}
       <p> {error} </p>
       <Link to="/" className="text-blue-700 underline">
