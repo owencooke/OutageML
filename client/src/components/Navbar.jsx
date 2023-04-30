@@ -9,7 +9,7 @@ const Navbar = () => {
           <IoPower className="text-3xl pb-[2px]" />
           utageML
         </div>
-        <div className="text-xl text-gray-500">Sign out</div>
+        <div className="text-xl text-gray-500">Hello, Jared!</div>
       </div>
     </div>
   );

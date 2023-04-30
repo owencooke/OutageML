@@ -1,34 +1,34 @@
 from django.shortcuts import render
-from .models import Customer
+from .models import Transformer
 from rest_framework import generics
-from .serializers import CustomerSerializer
+from .serializers import TransformerSerializer
 
 
-class CustomerCreate(generics.CreateAPIView):
+class TransformerCreate(generics.CreateAPIView):
     # API endpoint that allows creation of a new customer
-    queryset = (Customer.objects.all(),)
-    serializer_class = CustomerSerializer
+    queryset = (Transformer.objects.all(),)
+    serializer_class = TransformerSerializer
 
 
-class CustomerList(generics.ListAPIView):
+class TransformerList(generics.ListAPIView):
     # API endpoint that allows customer to be viewed.
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+    queryset = Transformer.objects.all()
+    serializer_class = TransformerSerializer
 
 
-class CustomerDetail(generics.RetrieveAPIView):
+class TransformerDetail(generics.RetrieveAPIView):
     # API endpoint that returns a single customer by pk.
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+    queryset = Transformer.objects.all()
+    serializer_class = TransformerSerializer
 
 
-class CustomerUpdate(generics.RetrieveUpdateAPIView):
+class TransformerUpdate(generics.RetrieveUpdateAPIView):
     # API endpoint that allows a customer record to be updated.
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+    queryset = Transformer.objects.all()
+    serializer_class = TransformerSerializer
 
 
-class CustomerDelete(generics.RetrieveDestroyAPIView):
+class TransformerDelete(generics.RetrieveDestroyAPIView):
     # API endpoint that allows a customer record to be deleted.
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+    queryset = Transformer.objects.all()
+    serializer_class = TransformerSerializer
