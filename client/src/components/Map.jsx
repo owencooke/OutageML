@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useState, useEffect } from 'react';
 
 const priorityCircle = {
   // Low - Green
@@ -45,6 +46,38 @@ const Map = () => {
       timeElapsed: 20,
       information: {
         message: 'High',
+      },
+    },
+    {
+      coordinates: [53.5512, -113.4836],
+      priorityRanking: 1,
+      timeElapsed: 5,
+      information: {
+        message: 'Low',
+      },
+    },
+    {
+      coordinates: [53.5304, -113.5057],
+      priorityRanking: 2,
+      timeElapsed: 10,
+      information: {
+        message: 'Medium',
+      },
+    },
+    {
+      coordinates: [53.5677, -113.5576],
+      priorityRanking: 3,
+      timeElapsed: 15,
+      information: {
+        message: 'High',
+      },
+    },
+    {
+      coordinates: [53.5415, -113.6012],
+      priorityRanking: 4,
+      timeElapsed: 20,
+      information: {
+        message: 'Urgent',
       },
     },
   ];
