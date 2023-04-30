@@ -62,7 +62,7 @@ const Map = ({ center, transformers, zoom, init, priorityMap }) => {
                       priorityMap[transformer.priorityRanking][0]
                     } w-full py-6 mb-3 rounded-lg text-center text-white font-bold`}
                   >
-                    <div>{transformer.information.message}</div>
+                    <div>{priorityMap[transformer.priorityRanking][0]}</div>
                   </div>
                   <div className="py-3 text-left text-base text-gray-500">
                     <div>Outage occurred: ...</div>

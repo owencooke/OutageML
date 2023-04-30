@@ -7,7 +7,7 @@ const TestAPI = () => {
 
   // Example fetch to get the customer list from the server/db
   useEffect(() => {
-    fetch('http://localhost:8000/customer/')
+    fetch('http://localhost:8000/transformer/')
       .then((response) => response.json())
       .then((data) => {
         setCustomers(data);

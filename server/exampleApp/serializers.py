@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import Customer
+from .models import Transformer
 
 
-class CustomerSerializer(serializers.ModelSerializer):
+class TransformerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
-        fields = ["pk", "name", "email", "created"]
+        model = Transformer
+        fields = ["coordinates", "priorityRanking", "timeElapsed", "resolved"]
 
