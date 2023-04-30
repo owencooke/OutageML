@@ -134,7 +134,7 @@ const Home = () => {
                       Outage elapsed: {transformer.timeElapsed} hours
                     </div>
                     <div
-                      className="w-1/6 text-black underline flex items-center"
+                      className="text-black underline flex items-center cursor-pointer"
                       onClick={() => {
                         setCenter(transformer.coordinates);
                         setZoom(15);

@@ -23,6 +23,7 @@ const createCustomClusterIcon = (cluster) => {
 };
 
 function UpdateMapCentre(props) {
+  // when the page refreshes, we don't want this to run
   if (props.init) {
     console.log(props.center, props.zoom);
     const map = useMap();
