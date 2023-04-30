@@ -62,15 +62,20 @@ const Map = ({ center, transformers, zoom, init, priorityMap }) => {
                       priorityMap[transformer.priorityRanking][0]
                     } w-full py-6 mb-3 rounded-lg text-center text-white font-bold`}
                   >
-                    <div>{priorityMap[transformer.priorityRanking][0]}</div>
+                    <div>{priorityMap[transformer.priorityRanking][1]}</div>
                   </div>
                   <div className="py-3 text-left text-base text-gray-500">
-                    <div>Outage occurred: ...</div>
-                    <div>Time elapsed: ...</div>
+                    <div>
+                      Outage Location: {transformer.coordinates[0]}{' '}
+                      {transformer.coordinates[1]}
+                    </div>
+                    <div>Time elapsed: {transformer.timeElapsed} hours</div>
                   </div>
                   <div className="border-t-[1px] border-black py-3 text-left text-base text-black">
-                    <li>This transformer recieved a score of ...</li>
-                    <li>It has been given a priority value of ...</li>
+                    <li>
+                      This transformer recieved a priority score of{' '}
+                      {transformer.priorityRanking}{' '}
+                    </li>
                   </div>
                 </Popup>
               </Marker>

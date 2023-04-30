@@ -20,56 +20,96 @@ const Home = () => {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
-    setTransformers([
-      {
-        coordinates: [53.5461, -113.4938],
-        priorityRanking: 2,
-        timeElapsed: 15,
-        resolved: false,
-      },
-      {
-        coordinates: [53.5232, -113.5263],
-        priorityRanking: 4,
-        timeElapsed: 25,
-        resolved: false,
-      },
-      {
-        coordinates: [53.5763, -113.5765],
-        priorityRanking: 1,
-        timeElapsed: 10,
-        resolved: false,
-      },
-      {
-        coordinates: [53.5333, -113.5765],
-        priorityRanking: 3,
-        timeElapsed: 20,
-        resolved: false,
-      },
-      {
-        coordinates: [53.5512, -113.4836],
-        priorityRanking: 1,
-        timeElapsed: 5,
-        resolved: true,
-      },
-      {
-        coordinates: [53.5304, -113.5057],
-        priorityRanking: 2,
-        timeElapsed: 10,
-        resolved: false,
-      },
-      {
-        coordinates: [53.5677, -113.5576],
-        priorityRanking: 3,
-        timeElapsed: 15,
-        resolved: true,
-      },
-      {
-        coordinates: [53.5415, -113.6012],
-        priorityRanking: 4,
-        timeElapsed: 20,
-        resolved: false,
-      },
-    ]);
+    setTransformers(
+      [
+        {
+          coordinates: [53.5461, -113.4938],
+          priorityRanking: 2,
+          timeElapsed: 15,
+          resolved: false,
+        },
+        {
+          coordinates: [53.524348, -113.527232],
+          priorityRanking: 1,
+          timeElapsed: 0.0,
+          resolved: false,
+        },
+        {
+          coordinates: [53.5232, -113.5263],
+          priorityRanking: 4,
+          timeElapsed: 25,
+          resolved: false,
+        },
+        {
+          coordinates: [53.5763, -113.5765],
+          priorityRanking: 1,
+          timeElapsed: 10,
+          resolved: false,
+        },
+        {
+          coordinates: [53.5333, -113.5765],
+          priorityRanking: 3,
+          timeElapsed: 20,
+          resolved: false,
+        },
+        {
+          coordinates: [53.5512, -113.4836],
+          priorityRanking: 1,
+          timeElapsed: 5,
+          resolved: true,
+        },
+        {
+          coordinates: [53.5304, -113.5057],
+          priorityRanking: 2,
+          timeElapsed: 10,
+          resolved: false,
+        },
+        {
+          coordinates: [53.5677, -113.5576],
+          priorityRanking: 3,
+          timeElapsed: 15,
+          resolved: true,
+        },
+        {
+          coordinates: [53.5415, -113.6012],
+          priorityRanking: 4,
+          timeElapsed: 20,
+          resolved: false,
+        },
+      ]
+      // [
+      //   ({
+      //     coordinates: [53.524348, -113.527232],
+      //     priorityRanking: 1,
+      //     timeElapsed: 0.0,
+      //     resolved: false,
+      //   },
+      //   {
+      //     coordinates: [53.548889, -113.525556],
+      //     priorityRanking: 2,
+      //     timeElapsed: 1.0000000000000002,
+      //     resolved: false,
+      //   },
+      //   {
+      //     coordinates: [53.552181, -113.491381],
+      //     priorityRanking: 3,
+      //     timeElapsed: 0.4000000000000001,
+      //     resolved: false,
+      //   },
+      //   {
+      //     coordinates: [53.544648, -113.490302],
+      //     priorityRanking: 4,
+      //     timeElapsed: 0.6000000000000001,
+      //     resolved: false,
+      //   },
+      //   {
+      //     coordinates: [53.53281, -113.50369],
+      //     priorityRanking: 5,
+      //     timeElapsed: 0.2,
+      //     resolved: false,
+      //   }),
+      // ]
+    );
 
     setWindowHeight(window.innerHeight);
     function handleResize() {
