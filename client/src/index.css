@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.leaflet-popup-content-wrapper {
+  all: unset;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  all: unset;
+}
+
+.leaflet-popup-tip-container {
+  all: unset;
+}
+
+.leaflet-popup-tip {
+  all: unset;
+}
