@@ -23,6 +23,7 @@ const createCustomClusterIcon = (cluster) => {
 };
 
 function UpdateMapCentre(props) {
+  // when the page refreshes, we don't want this to run
   if (props.init) {
     console.log(props.center, props.zoom);
     const map = useMap();
@@ -32,35 +33,49 @@ function UpdateMapCentre(props) {
   return null;
 }
 
-const Map = ({ center, transformers, zoom, init }) => {
+const Map = ({ center, transformers, zoom, init, priorityMap }) => {
   console.log('rendering map', center, zoom);
   return (
-    <MapContainer
-      center={center}
-      zoom={11}
-      // zoomControl={false}
-      className="h-screen"
-      minZoom={11}
-    >
+    <MapContainer center={center} zoom={11} className="h-screen" minZoom={11}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <MarkerClusterGroup
         chunkedLoading
         iconCreateFunction={createCustomClusterIcon}
       >
-        {transformers.map((transformer, i) => {
-          const priority = new Icon({
-            iconUrl: priorityCircle[transformer.priorityRanking],
-            iconSize: [30, 30],
-          });
+        {transformers
+          .filter((transformer) => !transformer.resolved)
+          .map((transformer, i) => {
+            const priority = new Icon({
+              iconUrl: priorityCircle[transformer.priorityRanking],
+              iconSize: [30, 30],
+            });
 
-          return (
-            <Marker key={i} position={transformer.coordinates} icon={priority}>
-              <Popup className="bg-white shadow-xl border-black border-[1px] rounded-xl p-4 h-96 w-96 text-lg">
-                {transformer.information.message}
-              </Popup>
-            </Marker>
-          );
-        })}
+            return (
+              <Marker
+                key={i}
+                position={transformer.coordinates}
+                icon={priority}
+              >
+                <Popup className="bg-white shadow-xl border-black border-[1px] rounded-xl p-4 h-96 w-96 text-lg">
+                  <div
+                    className={`${
+                      priorityMap[transformer.priorityRanking][0]
+                    } w-full py-6 mb-3 rounded-lg text-center text-white font-bold`}
+                  >
+                    <div>{transformer.information.message}</div>
+                  </div>
+                  <div className="py-3 text-left text-base text-gray-500">
+                    <div>Outage occurred: ...</div>
+                    <div>Time elapsed: ...</div>
+                  </div>
+                  <div className="border-t-[1px] border-black py-3 text-left text-base text-black">
+                    <li>This transformer recieved a score of ...</li>
+                    <li>It has been given a priority value of ...</li>
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
       </MarkerClusterGroup>
       <UpdateMapCentre center={center} zoom={zoom} init={init} />
     </MapContainer>
