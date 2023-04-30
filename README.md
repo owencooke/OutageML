@@ -30,7 +30,7 @@
 Clone this repository to your local machine:
 
 ```bash
-$ git clone https://github.com/kevinshen56714/create-react-django-app.git
+$ git clone git@github.com:owencooke/APIC2023.git
 ```
 
 ### To run the client
