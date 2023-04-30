@@ -2,15 +2,15 @@ import Map from './Map';
 import { useState, useEffect } from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
 
-const priorityColor = {
+const priorityMap = {
   // Low Outage - Green
-  1: 'bg-[#34a853]',
+  1: ['bg-[#34a853]', 'Low Outage'],
   // Medium Outage - YelLow Outage
-  2: 'bg-[#ebbd34]',
+  2: ['bg-[#ebbd34]', 'Medium Outage'],
   // High Outage - Orange
-  3: 'bg-[#eb8334]',
+  3: ['bg-[#eb8334]', 'High Outage'],
   // Urgent Outage! - red circle
-  4: 'bg-[#ff0000]',
+  4: ['bg-[#ff0000]', 'Urgent Outage!'],
 };
 const Home = () => {
   const [windowHeight, setWindowHeight] = useState(0);
@@ -22,68 +22,84 @@ const Home = () => {
   useEffect(() => {
     setTransformers([
       {
+        id: 1,
         coordinates: [53.5461, -113.4938],
         priorityRanking: 2,
         timeElapsed: 15,
         information: {
           message: 'Medium Outage',
         },
+        resolved: false,
       },
       {
+        id: 2,
         coordinates: [53.5232, -113.5263],
         priorityRanking: 4,
         timeElapsed: 25,
         information: {
           message: 'Urgent Outage!',
         },
+        resolved: false,
       },
       {
+        id: 3,
         coordinates: [53.5763, -113.5765],
         priorityRanking: 1,
         timeElapsed: 10,
         information: {
           message: 'Low Outage',
         },
+        resolved: false,
       },
       {
+        id: 4,
         coordinates: [53.5333, -113.5765],
         priorityRanking: 3,
         timeElapsed: 20,
         information: {
           message: 'High Outage',
         },
+        resolved: false,
       },
       {
+        id: 5,
         coordinates: [53.5512, -113.4836],
         priorityRanking: 1,
         timeElapsed: 5,
         information: {
           message: 'Low Outage',
         },
+        resolved: true,
       },
       {
+        id: 6,
         coordinates: [53.5304, -113.5057],
         priorityRanking: 2,
         timeElapsed: 10,
         information: {
           message: 'Medium Outage',
         },
+        resolved: false,
       },
       {
+        id: 7,
         coordinates: [53.5677, -113.5576],
         priorityRanking: 3,
         timeElapsed: 15,
         information: {
           message: 'High Outage',
         },
+        resolved: true,
       },
       {
+        id: 8,
         coordinates: [53.5415, -113.6012],
         priorityRanking: 4,
         timeElapsed: 20,
         information: {
           message: 'Urgent Outage!',
         },
+        resolved: false,
       },
     ]);
 
@@ -108,6 +124,7 @@ const Home = () => {
         className="w-2/5 p-8 flex flex-col gap-6 overflow-auto no-scrollbar"
       >
         {transformers
+          .filter((transformer) => !transformer.resolved)
           .sort((a, b) => b.priorityRanking - a.priorityRanking)
           .map((transformer, i) => {
             return (
@@ -117,12 +134,12 @@ const Home = () => {
               >
                 <div
                   className={`${
-                    priorityColor[transformer.priorityRanking]
+                    priorityMap[transformer.priorityRanking][0]
                   } mt-1 mr-3 h-4 w-4 rounded-full`}
                 ></div>
                 <div className="w-full flex flex-col gap-2">
                   <div className="w-5/6 font-medium text-xl">
-                    {transformer.information.message}
+                    {priorityMap[transformer.priorityRanking][1]}
                   </div>
                   <div className="w-5/6 text-gray-500">
                     {transformer.coordinates[0]}
@@ -156,6 +173,7 @@ const Home = () => {
           zoom={zoom}
           center={center}
           transformers={transformers}
+          priorityMap={priorityMap}
           init={init}
         />
       </div>
