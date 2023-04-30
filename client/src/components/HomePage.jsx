@@ -5,9 +5,9 @@ const priorityColor = {
   // Low Outage - Green
   1: 'bg-[#34a853]',
   // Medium Outage - YelLow Outage
-  2: 'bg-[#4285f4]',
+  2: 'bg-[#ebbd34]',
   // High Outage - Orange
-  3: 'bg-[#fbbc05]',
+  3: 'bg-[#eb8334]',
   // Urgent Outage! - red circle
   4: 'bg-[#ff0000]',
 };
