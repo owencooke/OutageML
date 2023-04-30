@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { Icon, divIcon, point } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -22,11 +22,22 @@ const createCustomClusterIcon = (cluster) => {
   });
 };
 
-const Map = ({ center, transformers, zoom }) => {
+function UpdateMapCentre(props) {
+  if (props.init) {
+    console.log(props.center, props.zoom);
+    const map = useMap();
+    map.panTo(props.center);
+    map.zoomIn(props.zoom);
+  }
+  return null;
+}
+
+const Map = ({ center, transformers, zoom, init }) => {
+  console.log('rendering map', center, zoom);
   return (
     <MapContainer
       center={center}
-      zoom={zoom}
+      zoom={11}
       // zoomControl={false}
       className="h-screen"
       minZoom={11}
@@ -51,6 +62,7 @@ const Map = ({ center, transformers, zoom }) => {
           );
         })}
       </MarkerClusterGroup>
+      <UpdateMapCentre center={center} zoom={zoom} init={init} />
     </MapContainer>
   );
 };

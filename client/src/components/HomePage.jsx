@@ -16,6 +16,7 @@ const Home = () => {
   const [transformers, setTransformers] = useState([]);
   const [center, setCenter] = useState([53.5244, -113.4909]);
   const [zoom, setZoom] = useState(11);
+  const [init, setInit] = useState(false);
 
   useEffect(() => {
     setTransformers([
@@ -114,7 +115,8 @@ const Home = () => {
                 className="w-full h-40 rounded-xl flex border-[1px] border-black p-6"
                 onClick={() => {
                   setCenter(transformer.coordinates);
-                  setZoom(5);
+                  setZoom(15);
+                  setInit(true);
                 }}
               >
                 <div
@@ -142,7 +144,12 @@ const Home = () => {
 
       {/* Map component */}
       <div className="w-3/5 border-l-[1px] border-black">
-        <Map zoom={zoom} center={center} transformers={transformers} />
+        <Map
+          zoom={zoom}
+          center={center}
+          transformers={transformers}
+          init={init}
+        />
       </div>
     </div>
   );
