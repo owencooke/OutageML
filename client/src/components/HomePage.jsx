@@ -131,7 +131,7 @@ const Home = () => {
 
       {/* Map component */}
       <div className="w-3/5 border-l-2">
-        <Map />
+        <Map transformers={transformers} />
       </div>
     </div>
   );
