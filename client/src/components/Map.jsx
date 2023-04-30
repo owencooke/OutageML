@@ -22,13 +22,11 @@ const createCustomClusterIcon = (cluster) => {
   });
 };
 
-const Map = ({ transformers }) => {
-  const edmontonCenter = [53.5244, -113.4909];
-
+const Map = ({ center, transformers, zoom }) => {
   return (
     <MapContainer
-      center={edmontonCenter}
-      zoom={11}
+      center={center}
+      zoom={zoom}
       // zoomControl={false}
       className="h-screen"
       minZoom={11}
@@ -46,7 +44,7 @@ const Map = ({ transformers }) => {
 
           return (
             <Marker key={i} position={transformer.coordinates} icon={priority}>
-              <Popup className="bg-white shadow-xl rounded-xl p-4 h-96 w-96 text-lg">
+              <Popup className="bg-white shadow-xl border-black border-[1px] rounded-xl p-4 h-96 w-96 text-lg">
                 {transformer.information.message}
               </Popup>
             </Marker>

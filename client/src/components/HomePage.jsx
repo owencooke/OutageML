@@ -14,6 +14,8 @@ const priorityColor = {
 const Home = () => {
   const [windowHeight, setWindowHeight] = useState(0);
   const [transformers, setTransformers] = useState([]);
+  const [center, setCenter] = useState([53.5244, -113.4909]);
+  const [zoom, setZoom] = useState(11);
 
   useEffect(() => {
     setTransformers([
@@ -95,19 +97,26 @@ const Home = () => {
 
   const navbarHeight = 80; // Set your navbar height here
   const bodyHeight = windowHeight - navbarHeight;
-  console.log(bodyHeight);
+
   return (
     <div className="flex flex-row w-screen">
       {/* Priority List */}
       <div
         style={{ height: bodyHeight }}
-        className="w-1/3 p-8 flex flex-col gap-6 overflow-auto"
+        className="w-2/5 p-8 flex flex-col gap-6 overflow-auto no-scrollbar"
       >
         {transformers
           .sort((a, b) => b.priorityRanking - a.priorityRanking)
           .map((transformer, i) => {
             return (
-              <div key={i} className="w-full h-40 rounded-xl flex border-2 p-6">
+              <div
+                key={i}
+                className="w-full h-40 rounded-xl flex border-[1px] border-black p-6"
+                onClick={() => {
+                  setCenter(transformer.coordinates);
+                  setZoom(5);
+                }}
+              >
                 <div
                   className={`${
                     priorityColor[transformer.priorityRanking]
@@ -132,8 +141,8 @@ const Home = () => {
       </div>
 
       {/* Map component */}
-      <div className="w-2/3 border-l-2">
-        <Map transformers={transformers} />
+      <div className="w-3/5 border-l-[1px] border-black">
+        <Map zoom={zoom} center={center} transformers={transformers} />
       </div>
     </div>
   );
