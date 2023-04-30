@@ -1,5 +1,6 @@
 import Map from './Map';
 import { useState, useEffect } from 'react';
+import { BsArrowRightShort } from 'react-icons/bs';
 
 const priorityColor = {
   // Low Outage - Green
@@ -113,11 +114,6 @@ const Home = () => {
               <div
                 key={i}
                 className="w-full h-40 rounded-xl flex border-[1px] border-black p-6"
-                onClick={() => {
-                  setCenter(transformer.coordinates);
-                  setZoom(15);
-                  setInit(true);
-                }}
               >
                 <div
                   className={`${
@@ -133,8 +129,20 @@ const Home = () => {
                     {', '}
                     {transformer.coordinates[0]}
                   </div>
-                  <div className="w-5/6 text-gray-500">
-                    Outage elapsed: {transformer.timeElapsed} hours
+                  <div className="flex justify-between">
+                    <div className="w-5/6 text-gray-500">
+                      Outage elapsed: {transformer.timeElapsed} hours
+                    </div>
+                    <div
+                      className="w-1/6 text-black underline flex items-center"
+                      onClick={() => {
+                        setCenter(transformer.coordinates);
+                        setZoom(15);
+                        setInit(true);
+                      }}
+                    >
+                      View <BsArrowRightShort />
+                    </div>
                   </div>
                 </div>
               </div>
