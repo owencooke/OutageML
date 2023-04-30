@@ -1,109 +1,68 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Icon } from 'leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { Icon, divIcon, point } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useState, useEffect } from 'react';
+import MarkerClusterGroup from 'react-leaflet-cluster';
 
 const priorityCircle = {
   // Low - Green
   1: 'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120"><circle cx="50" cy="50" r="50" fill="%2334a853" stroke="white" stroke-width="15"/></svg>',
   // Medium - Yellow
-  2: 'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120"><circle cx="50" cy="50" r="50" fill="%234285f4" stroke="white" stroke-width="15"/></svg>',
+  2: 'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120"><circle cx="50" cy="50" r="50" fill="%23ebbd34" stroke="white" stroke-width="15"/></svg>',
   // High - Orange
-  3: 'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120"><circle cx="50" cy="50" r="50" fill="%23fbbc05" stroke="white" stroke-width="15"/></svg>',
-  // Urgent - red circle
+  3: 'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120"><circle cx="50" cy="50" r="50" fill="%23eb8334" stroke="white" stroke-width="15"/></svg>',
+  // Urgent Outage! - red circle
   4: 'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120"><circle cx="50" cy="50" r="50" fill="%23ff0000" stroke="white" stroke-width="15"/></svg>',
 };
 
-const Map = () => {
-  const transformers = [
-    {
-      coordinates: [53.5461, -113.4938],
-      priorityRanking: 2,
-      timeElapsed: 15,
-      information: {
-        message: 'Medium',
-      },
-    },
-    {
-      coordinates: [53.5232, -113.5263],
-      priorityRanking: 4,
-      timeElapsed: 25,
-      information: {
-        message: 'Urgent',
-      },
-    },
-    {
-      coordinates: [53.5763, -113.5765],
-      priorityRanking: 1,
-      timeElapsed: 10,
-      information: {
-        message: 'Low',
-      },
-    },
-    {
-      coordinates: [53.5333, -113.5765],
-      priorityRanking: 3,
-      timeElapsed: 20,
-      information: {
-        message: 'High',
-      },
-    },
-    {
-      coordinates: [53.5512, -113.4836],
-      priorityRanking: 1,
-      timeElapsed: 5,
-      information: {
-        message: 'Low',
-      },
-    },
-    {
-      coordinates: [53.5304, -113.5057],
-      priorityRanking: 2,
-      timeElapsed: 10,
-      information: {
-        message: 'Medium',
-      },
-    },
-    {
-      coordinates: [53.5677, -113.5576],
-      priorityRanking: 3,
-      timeElapsed: 15,
-      information: {
-        message: 'High',
-      },
-    },
-    {
-      coordinates: [53.5415, -113.6012],
-      priorityRanking: 4,
-      timeElapsed: 20,
-      information: {
-        message: 'Urgent',
-      },
-    },
-  ];
+const createCustomClusterIcon = (cluster) => {
+  return new divIcon({
+    html: `<div class="bg-fuchsia-500 border-4 border-fuchsia-300 text-white h-10 w-10 rounded-full flex items-center justify-center">${cluster.getChildCount()}</div>`,
+    className: 'custom-marker-cluster',
+    iconSize: point(33, 33, true),
+  });
+};
 
-  const edmontonCenter = [53.5444, -113.4909];
+function UpdateMapCentre(props) {
+  if (props.init) {
+    console.log(props.center, props.zoom);
+    const map = useMap();
+    map.panTo(props.center);
+    map.zoomIn(props.zoom);
+  }
+  return null;
+}
 
+const Map = ({ center, transformers, zoom, init }) => {
+  console.log('rendering map', center, zoom);
   return (
     <MapContainer
-      center={edmontonCenter}
+      center={center}
       zoom={11}
-      zoomControl={false}
+      // zoomControl={false}
       className="h-screen"
+      minZoom={11}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {transformers.map((transformer, i) => {
-        const priority = new Icon({
-          iconUrl: priorityCircle[transformer.priorityRanking],
-          iconSize: [30, 30],
-        });
+      <MarkerClusterGroup
+        chunkedLoading
+        iconCreateFunction={createCustomClusterIcon}
+      >
+        {transformers.map((transformer, i) => {
+          const priority = new Icon({
+            iconUrl: priorityCircle[transformer.priorityRanking],
+            iconSize: [30, 30],
+          });
 
-        return (
-          <Marker key={i} position={transformer.coordinates} icon={priority}>
-            <Popup>{transformer.information.message}</Popup>
-          </Marker>
-        );
-      })}
+          return (
+            <Marker key={i} position={transformer.coordinates} icon={priority}>
+              <Popup className="bg-white shadow-xl border-black border-[1px] rounded-xl p-4 h-96 w-96 text-lg">
+                {transformer.information.message}
+              </Popup>
+            </Marker>
+          );
+        })}
+      </MarkerClusterGroup>
+      <UpdateMapCentre center={center} zoom={zoom} init={init} />
     </MapContainer>
   );
 };

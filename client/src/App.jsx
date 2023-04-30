@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen no-scrollbar">
       <Router>
         <Navbar />
         <Routes>
