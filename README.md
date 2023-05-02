@@ -1,6 +1,6 @@
 # APIC 2023
 
-![Image](https://user-images.githubusercontent.com/11501902/169211080-f0beca5a-ccb9-430a-8609-266e458d5ec0.png)
+https://user-images.githubusercontent.com/83478026/235809636-30e9a382-2c49-4c62-95e2-e0b854d06f58.mov
 
 > **Note**
 > Customers can be added with the backend GUI at localhost:8000/customer/create or through POST request
@@ -30,7 +30,7 @@
 Clone this repository to your local machine:
 
 ```bash
-$ git clone git@github.com:owencooke/APIC2023.git
+$ git clone git@github.com:jdrco/APIC2023.git
 ```
 
 ### To run the client
