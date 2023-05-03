@@ -2,16 +2,12 @@
 
 https://user-images.githubusercontent.com/83478026/235809636-30e9a382-2c49-4c62-95e2-e0b854d06f58.mov
 
-> **Note**
-> Customers can be added with the backend GUI at localhost:8000/customer/create or through POST request
-
-## What's included?
-
 ### Frontend
 
 - React (frontend framework)
   - Create React App (support for TSX, ES6, TypeScript, no need to install bundler, ...etc)
-  - An example fetch() GET request to the server in [`client/src/App.tsx`](https://github.com/kevinshen56714/create-react-django-app/blob/bb16565cff0d6d1d41a3d3f487f745b08d0a34f6/client/src/App.tsx#L11)
+- Leaflet.js
+- Tailwind CSS
 
 ### Backend
 
@@ -22,11 +18,9 @@ https://user-images.githubusercontent.com/83478026/235809636-30e9a382-2c49-4c62-
   - Python-decouple (to get env file content)
 - Django (backend framework)
   - Django REST Framework (Django's toolkit for building Web APIs)
-  - An example app in the [`server/exampleApp`](https://github.com/kevinshen56714/create-react-django-app/tree/main/server/exampleApp) folder showing how to setup API models, serializers, and views
 - PostgreSQL (database)
 
 ## Getting Started
-
 Clone this repository to your local machine:
 
 ```bash
@@ -45,6 +39,8 @@ $ npm run dev
 ### To run the server
 
 #### Django and PostgreSQL
+
+Need to be on UNIX environment
 
 You first need to have [PostgreSQL](https://www.postgresql.org/download/) installed and running, and create a user and a database. Afterwards, create `./server/.env` file to store your database information along with some Django settings. It should have values for all the following keys:
 
@@ -71,9 +67,3 @@ $ cd server
 $ python manage.py migrate  # make sure your selected Python interpreter is the one in .venv
 $ python manage.py runserver
 ```
-> **Note**
-> May require `sudo apt-get install libpq-dev` as a missing dependency for psycopg2. Run if `poetry install` fails.
-> Once the server is running, you can go to localhost:8000/customer/ and localhost:8000/customer/create to play around with the example API GET and POST requests.
-
-> **Note**
-> If you add customers at localhost:8000/customer/create, you should see the customer information shown on the frontend at localhost:3000
