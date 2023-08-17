@@ -1,6 +1,12 @@
-# APIC 2023
+# OutageML
 
 https://user-images.githubusercontent.com/83478026/235809636-30e9a382-2c49-4c62-95e2-e0b854d06f58.mov
+
+## Won 2nd Place at the 2023 APIC Energy Hackathon 🎉
+
+![APIC 2023 Certificate](https://github.com/owencooke/OutageML/assets/90405643/b8b590c8-af9d-4e12-9477-05bb225ed6f8)
+
+
 
 ### Frontend
 
@@ -19,12 +25,13 @@ https://user-images.githubusercontent.com/83478026/235809636-30e9a382-2c49-4c62-
 - Django (backend framework)
   - Django REST Framework (Django's toolkit for building Web APIs)
 - PostgreSQL (database)
+- PyTorch
 
 ## Getting Started
 Clone this repository to your local machine:
 
 ```bash
-$ git clone git@github.com:jdrco/APIC2023.git
+git clone git@github.com:owencooke/OutageML.git
 ```
 
 ### To run the client
@@ -32,8 +39,8 @@ $ git clone git@github.com:jdrco/APIC2023.git
 In the project folder,
 
 ```bash
-$ cd client
-$ npm run dev
+cd client
+npm i && npm run dev
 ```
 
 ### To run the server
